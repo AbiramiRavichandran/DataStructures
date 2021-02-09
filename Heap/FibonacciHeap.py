@@ -11,8 +11,7 @@ class Fibonacci_Tree:
         self.order += 1
 
     def print_tree(self):
-        q = []
-        q.append(self)
+        q = [self]
         while q:
             n = len(q)
             while n:
@@ -55,7 +54,7 @@ class Fibonacci_Heap:
 
     def get_min(self):
         if self.least:
-            return self.least.datatra
+            return self.least.data
 
     def extract_min(self):
         if self.count == 0:
@@ -94,8 +93,7 @@ class Fibonacci_Heap:
                 itr.data = val
                 flag = 1
             else:
-                q = []
-                q.append(itr)
+                q = [itr]
                 while q and flag == 0:
                     parent = q.pop(0)
                     for child in parent.children:

@@ -27,6 +27,36 @@ def print_specific_level_order_traversal(root):
             q.append(first.right)
             q.append(second.left)
 
+def print_specific_level_order_traversal_2(root):
+    if not root:
+        return
+    s = []
+    q = [root.data]
+    if root.left:
+        s.append(root.left)
+        s.append(root.right)
+
+    while s:
+        n = len(s)
+        temp = []
+        while n:
+            first = s.pop(0)
+            temp.append(first.data)
+            second = s.pop(0)
+            temp.append(second.data)
+
+            if first.left:
+                s.append(first.left)
+                s.append(second.right)
+                s.append(first.right)
+                s.append(second.left)
+            n -= 2
+        temp.extend(q)
+        q = temp
+
+    print(q)
+
+
 
 
 if __name__ == "__main__":
@@ -68,3 +98,5 @@ if __name__ == "__main__":
     root.right.right.right.right = Node(31)
 
     print_specific_level_order_traversal(root)
+    print()
+    print_specific_level_order_traversal_2(root)
